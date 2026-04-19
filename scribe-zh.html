@@ -707,6 +707,277 @@
             font-size: 0.85rem;
         }
 
+        /* ===== 内测申请弹窗样式 ===== */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 创建内部滚动容器 */
+        .modal-body {
+            padding: 2rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+            flex: 1;
+            /* 滚动条完全在内部 */
+            scrollbar-width: thin;
+            scrollbar-color: #c1c1c1 #f1f1f1;
+        }
+
+        /* Webkit 浏览器滚动条 */
+        .modal-body::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: transparent;
+            padding: 2px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: #d1d1d1;
+            border-radius: 10px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb:hover {
+            background: #b1b1b1;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+        }
+
+        /* 关闭按钮绝对定位悬浮 */
+        .modal-close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid #f0f0f0;
+            font-size: 1.8rem;
+            line-height: 1;
+            cursor: pointer;
+            color: #999;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-close:hover {
+            background: #fff;
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: rotate(90deg);
+            box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
+        }
+
+        .modal-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-light);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #f5f5f5;
+            color: var(--text-dark);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .label-icon {
+            font-size: 1.2rem;
+        }
+
+        .required {
+            color: var(--secondary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-hint {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: var(--primary);
+        }
+
+        .checkbox-text {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 140, 66, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-loading {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .modal-content {
+                width: 95%;
+            }
+            
+            .modal-header,
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+
         /* ===== 动画 ===== */
         @keyframes fadeInUp {
             from {
@@ -1056,7 +1327,7 @@
         <div class="download-content fade-in">
             <h2 class="download-title">开始您的简约之旅</h2>
             <p class="download-desc">免费下载简约笔记，体验纯粹的书写之美</p>
-            <a href="https://gitee.com/zhxzhx66er/34534grdfgdfgfdeyrty/releases/download/readest/note.apk" class="download-btn">
+            <a href="#" class="download-btn">
                 <span>&#128241;</span>
                 立即下载 Android 版
             </a>
@@ -1075,12 +1346,106 @@
                 <a href="privacy-zh.html">隐私政策</a>
                 <a href="terms-zh.html">用户协议</a>
                 <a href="contact-zh.html">联系我们</a>
+                <a href="#" onclick="openBetaModal(); return false;">内测申请</a>
             </div>
             <div class="footer-copyright">
                 &copy; 2026 简约笔记. All rights reserved. 用心记录每一刻。
             </div>
         </div>
     </footer>
+
+    <!-- 内测申请弹窗 -->
+    <div id="betaModal" class="modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon">🌟</div>
+                <h2 class="modal-title">加入先驱者计划</h2>
+                <p class="modal-subtitle">成为内测用户，优先体验最新功能</p>
+                <button class="modal-close" onclick="closeBetaModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="betaForm" onsubmit="submitBetaForm(event)">
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <span class="label-icon">📧</span>
+                            电子邮箱 <span class="required">*</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="your@email.com"
+                            required
+                        />
+                        <p class="form-hint">我们将向此邮箱发送内测邀请和更新通知</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name" class="form-label">
+                            <span class="label-icon">👤</span>
+                            昵称
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            class="form-input" 
+                            placeholder="您希望我们如何称呼您"
+                        />
+                        <p class="form-hint">让我们更好地认识您</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="occupation" class="form-label">
+                            <span class="label-icon">💼</span>
+                            职业领域
+                        </label>
+                        <select id="occupation" name="occupation" class="form-input">
+                            <option value="">请选择您的职业领域</option>
+                            <option value="student">学生</option>
+                            <option value="developer">开发者/程序员</option>
+                            <option value="designer">设计师</option>
+                            <option value="writer">作家/内容创作者</option>
+                            <option value="education">教育工作者</option>
+                            <option value="business">商务人士</option>
+                            <option value="other">其他</option>
+                        </select>
+                        <p class="form-hint">帮助我们了解用户群体</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reason" class="form-label">
+                            <span class="label-icon">✨</span>
+                            申请理由
+                        </label>
+                        <textarea 
+                            id="reason" 
+                            name="reason" 
+                            class="form-input form-textarea" 
+                            placeholder="请简单说明您为什么想成为内测用户..."
+                            rows="3"
+                        ></textarea>
+                        <p class="form-hint">这将帮助我们更好地了解您的需求</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="agree" required />
+                            <span class="checkbox-text">我同意接收内测相关的邮件通知</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">提交申请</span>
+                        <span class="btn-loading" style="display: none;">提交中...</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script>
         // ===== 导航栏滚动效果 =====
@@ -1167,6 +1532,107 @@
                 }
             });
         });
+
+        // ===== 内测申请弹窗功能 =====
+        function openBetaModal() {
+            document.getElementById('betaModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBetaModal() {
+            document.getElementById('betaModal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // ESC 键关闭弹窗
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBetaModal();
+            }
+        });
+
+        // 提交表单
+        async function submitBetaForm(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('betaForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
+            
+            // 获取表单数据
+            const formData = new FormData(form);
+            const email = formData.get('email');
+            const name = formData.get('name');
+            const occupation = formData.get('occupation');
+            const reason = formData.get('reason');
+            const agree = formData.get('agree');
+            
+            // 检查邮箱是否已存在
+            const checkUrl = `https://hgmpejfrhfiitpmyoieq.supabase.co/rest/v1/beta_user?email=eq.${encodeURIComponent(email)}&select=id`;
+            
+            try {
+                // 禁用按钮
+                submitBtn.disabled = true;
+                btnText.style.display = 'none';
+                btnLoading.style.display = 'inline';
+                
+                // 检查是否已存在
+                const checkResponse = await fetch(checkUrl, {
+                    method: 'GET',
+                    headers: {
+                        'apikey': 'sb_publishable_tYv8QXhk3RXZ2SW_5itwIw_sZmbiC3m',
+                        'Authorization': 'Bearer sb_publishable_tYv8QXhk3RXZ2SW_5itwIw_sZmbiC3m',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const checkData = await checkResponse.json();
+                
+                if (checkData && checkData.length > 0) {
+                    alert('该邮箱已经是内测用户啦！');
+                    closeBetaModal();
+                    return;
+                }
+                
+                // 提交到 beta_user 表
+                const submitUrl = 'https://hgmpejfrhfiitpmyoieq.supabase.co/rest/v1/beta_user';
+                const submitData = {
+                    email: email,
+                    name: name || null,
+                    occupation: occupation || null,
+                    reason: reason || null
+                };
+                
+                const submitResponse = await fetch(submitUrl, {
+                    method: 'POST',
+                    headers: {
+                        'apikey': 'sb_publishable_tYv8QXhk3RXZ2SW_5itwIw_sZmbiC3m',
+                        'Authorization': 'Bearer sb_publishable_tYv8QXhk3RXZ2SW_5itwIw_sZmbiC3m',
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=representation'
+                    },
+                    body: JSON.stringify(submitData)
+                });
+                
+                if (submitResponse.ok) {
+                    alert('🎉 申请成功！我们会尽快审核您的申请，请留意邮箱通知~');
+                    form.reset();
+                    closeBetaModal();
+                } else {
+                    const errorData = await submitResponse.json();
+                    alert('申请失败：' + (errorData.message || '请稍后重试'));
+                }
+            } catch (error) {
+                console.error('提交失败:', error);
+                alert('网络错误，请稍后重试');
+            } finally {
+                // 恢复按钮状态
+                submitBtn.disabled = false;
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
